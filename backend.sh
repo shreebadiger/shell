@@ -5,7 +5,7 @@ color="\e[34m"
 
 echo -e "${color} Disabling default nodejs \e[0m"
 dnf module disable nodejs -y &>>$log_file
-echo $?if [ $? -eq 0 ]; then
+if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
@@ -35,6 +35,8 @@ else
     echo -e "\e[31m Failure \e[0m"
  fi
 
+id expense &>>$log_file
+if [ $? -eq 0 ]; then
 echo -e "${color} Creating user to run application \e[0m"
 useradd expense &>>$log_file
 if [ $? -eq 0 ]; then
@@ -42,13 +44,16 @@ if [ $? -eq 0 ]; then
 else
     echo -e "\e[31m Failure \e[0m"
  fi
+ fi
 
+if [ ! -d /app ]; then
 echo -e "${color} Creating directory for the application \e[0m"
 mkdir /app &>>$log_file
 if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
+ fi
  fi
 
 echo -e "${color} Removing old application content \e[0m"
