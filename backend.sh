@@ -33,28 +33,28 @@ if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 id expense &>>$log_file
 if [ $? -ne 0 ]; then
 echo -e "${color} Creating user to run application \e[0m"
 useradd expense &>>$log_file
-if [ $? -eq 0 ]; then
+  if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
- fi
+   fi
+fi
 
 if [ ! -d /app ]; then
 echo -e "${color} Creating directory for the application \e[0m"
 mkdir /app &>>$log_file
-if [ $? -eq 0 ]; then
+   if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
- fi
+   fi
+fi
 
 echo -e "${color} Removing old application content \e[0m"
 rm -ef /app/* &>>$log_file
@@ -64,9 +64,14 @@ else
     echo -e "\e[31m Failure \e[0m"
  fi
 
-echo -e "${color}Downloading file \e[0m"
+echo -e "${color} Downloading file \e[0m"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip  &>>$log_file
-echo $?
+if [ $? -eq 0 ]; then
+   echo -e "\e[31m Success \e[0m"
+else
+    echo -e "\e[31m Failure \e[0m"
+ fi
+
 
 echo -e "${color} Extracting the file \e[0m"
 cd /app  &>>/log_file
