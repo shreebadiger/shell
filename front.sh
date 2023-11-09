@@ -12,7 +12,7 @@ else
 echo -e "${color} copying expense configuration file nginx \e[0m"
 cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
 if [ $? -eq 0 ]; then
-   echo -e "\e[31m Success \e[0m"
+   echo -e "\e[31m Success \e[0m"  
 else
     echo -e "\e[31m Failure \e[0m"
  fi
