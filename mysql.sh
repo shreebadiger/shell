@@ -13,5 +13,5 @@ systemctl enable mysqld
 echo -e "\e[36m Starting mysql server \e[0m"
 systemctl start mysqld
 
-echo -e "\e[36m setting password to mysql server \e[0m"
+echo -e "\e[36m setting password to mysql \e[0m"
 mysql_secure_installation --set-root-pass ExpenseApp@1
