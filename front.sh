@@ -14,6 +14,6 @@ echo -e "\e[36m Extracting content \e[0m" &>>/tmp/expense.log
 cd /usr/share/nginx/html &>>/tmp/expense.log
 unzip /tmp/frontend.zip &>>/tmp/expense.log
 
-echo -e "\e[36m Starting nginx  \e[0m" &>>/tmp/expense.log
+echo -e "\e[36m Starting nginx  \e[0m" 
 systemctl enable nginx &>>/tmp/expense.log
 systemctl restart nginx &>>/tmp/expense.log
