@@ -1,5 +1,5 @@
 log_file=/tmp/expense.log
-color="\e[35m"
+color="\e[34m"
 
 
 
