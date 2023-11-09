@@ -36,7 +36,7 @@ else
  fi
 
 id expense &>>$log_file
-if [ $? -eq 0 ]; then
+if [ $? -ne 0 ]; then
 echo -e "${color} Creating user to run application \e[0m"
 useradd expense &>>$log_file
 if [ $? -eq 0 ]; then
