@@ -1,5 +1,6 @@
 log_file=/tmp/expense.log
 color="\e[34m"
+MYSQL_ROOT_PASSWORD=$1
 
 
 
@@ -109,7 +110,7 @@ else
  fi
 
 echo -e "${color} Loading the schema \e[0m"
-mysql -h mysql-dev.sbadiger93.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+mysql -h mysql-dev.sbadiger93.online -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>>$log_file
 if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
