@@ -23,7 +23,7 @@ echo -e "${color} Copying backend service file \e[0m"
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
 status_check()
 
-echo -e "${color} Enabling nodejs required version \e[0m"
+echo -e "${color} Enabling required nodejs version \e[0m"
 dnf module enable nodejs:18 -y &>>$log_file
 status_check()
 
