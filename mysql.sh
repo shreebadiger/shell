@@ -1,5 +1,11 @@
 source common.sh
 
+if [ -z "$1" ]; then
+ echo password missing
+ exit
+fi
+MYSQL_ROOT_PASSWORD=$1
+
 echo -e "${color}Disabling default mysql version \e[0m"
 dnf module disable mysql -y &>>$log_file
 status_check
@@ -22,5 +28,5 @@ systemctl start mysqld &>>$log_file
 status_check
 
 echo -e "${color} setting password to mysql \e[0m"
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
+mysql_secure_installation --set-root-pass ${MYSQL_ROOT_PASSWORD} &>>$log_file
 status_check
