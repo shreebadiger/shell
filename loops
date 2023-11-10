@@ -6,4 +6,10 @@ while [ "$a" -gt 0  ]; do
  sleep 1
 done
 
+for fruits in apple mango chiku ; do
+echo fruit name - $fruits
+
+sleep 2 
+
+done
 
