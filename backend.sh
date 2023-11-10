@@ -1,5 +1,9 @@
 log_file=/tmp/expense.log
 color="\e[34m"
+
+if [-z "$1"]; then
+ echo password missing
+ exit
 MYSQL_ROOT_PASSWORD=$1
 
 
