@@ -30,7 +30,7 @@ if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 echo -e "${color} Installing nodejs \e[0m"
 dnf install nodejs -y &>>$log_file
@@ -62,12 +62,12 @@ else
 fi
 
 echo -e "${color} Removing old application content \e[0m"
-rm -ef /app/* &>>$log_file
+rm -rf /app/* &>>$log_file
 if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 echo -e "${color} Downloading file \e[0m"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip  &>>$log_file
@@ -75,7 +75,7 @@ if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 
 echo -e "${color} Extracting the file \e[0m"
@@ -85,7 +85,7 @@ if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 echo -e "${color} Installing dependencies \e[0m"
 cd /app &>>$log_file
@@ -94,7 +94,7 @@ if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 echo -e "${color} Starting backend service \e[0m"
 systemctl daemon-reload &>>$log_file
@@ -104,14 +104,14 @@ if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 dnf install mysql -y &>>$log_file
 if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
 
 echo -e "${color} Loading the schema \e[0m"
 mysql -h mysql-dev.sbadiger93.online -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>>$log_file
@@ -119,4 +119,4 @@ if [ $? -eq 0 ]; then
    echo -e "\e[31m Success \e[0m"
 else
     echo -e "\e[31m Failure \e[0m"
- fi
+fi
